@@ -869,7 +869,7 @@ class CTCModel:
         assert (K.backend() == 'tensorflow')
 
         batch = tf.log(tf.transpose(y_pred, perm=[1, 0, 2]) + 1e-8)
-        input_length = tf.to_int32(tf.squeeze(input_length))
+        input_length = tf.dtypes.cast(tf.squeeze(input_length), tf.int32)
 
         greedy = my_params['greedy']
         beam_width = my_params['beam_width']
