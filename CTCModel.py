@@ -868,7 +868,7 @@ class CTCModel:
 
         assert (K.backend() == 'tensorflow')
 
-        batch = tf.log(tf.transpose(y_pred, perm=[1, 0, 2]) + 1e-8)
+        batch = tf.math.log(tf.transpose(y_pred, perm=[1, 0, 2]) + 1e-8)
         input_length = tf.dtypes.cast(tf.squeeze(input_length), tf.int32)
 
         greedy = my_params['greedy']
