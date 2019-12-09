@@ -309,7 +309,7 @@ class CTCModel:
         out = self.model_train.fit_generator(generator, steps_per_epoch, epochs=epochs, verbose=verbose,
                                              callbacks=callbacks, validation_data=validation_data,
                                              validation_steps=validation_steps, class_weight=class_weight,
-                                             max_q_size=max_q_size, workers=workers, pickle_safe=pickle_safe,
+                                             max_queue_size=max_q_size, workers=workers, pickle_safe=pickle_safe,
                                              initial_epoch=initial_epoch)
 
         self.model_pred.set_weights(self.model_train.get_weights())  # required??
