@@ -149,6 +149,18 @@ class CTCModel:
         loss = np.sum(loss_data)
 
         return loss, loss_data
+    
+    def load_checkpoint(self, checkpoint_path):
+        if checkpoint_path is not None:
+            if os.path.exists(checkpoint_path):
+                self.model_train.load_weights(checkpoint_path)
+                self.model_pred.set_weights(self.model_train.get_weights())
+                self.model_eval.set_weights(self.model_train.get_weights())
+                return True
+            else:
+                print("The checkpoint file " + checkpoint_path + " is not found! Aborting...")
+                return False
+        return False
 
 
     def get_loss(self, inputs, verbose=False):
